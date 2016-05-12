@@ -2,12 +2,12 @@
 
 DC/OS comes with a set of powerful yet un-opinionated [service discovery](https://dcos.io/docs/1.7/usage/service-discovery/) mechanisms. While powerful, it can sometimes be hard for newcomers to quickly get results, so here a few tips and tricks in the following.
 
-## 1. Prerequisites 
+## Prerequisites 
 
 1. Many shell commands below assume you've got [jq](https://stedolan.github.io/jq/download/) installed.
 2. All bash shell commands below assume that you've added your private SSH key already; if you haven't done this yet do the following: `$ ssh-add ~/.ssh/MYPRIVATEKEY`
 
-## 2. Using the DC/OS command line interface
+## 1. Using the DC/OS command line interface
 
 ### IP address of node a  Marathon app is running on
 
@@ -43,7 +43,7 @@ Or, alternatively, using a different sub-command:
 
     $ export APP_ENDPOINT=$(dcos marathon app show peek | jq .tasks[0].host,.tasks[0].ports[0])
 
-## 3. Using dig
+## 2. Using dig
 
 Assuming you want a Marathon app with the ID `/example` and you have `dig` installed. Then you can—from within the cluster, that is, after SSHing into a node—do the following:
 
@@ -52,7 +52,9 @@ Assuming you want a Marathon app with the ID `/example` and you have `dig` insta
     $ export APP_ENDPOINT=$app_ip:$app_port
 
 
-## In Go
+## 3. Programming Languages
+
+### In Go
 
     type SRVRecord struct {
     	Service string
@@ -81,10 +83,10 @@ Assuming you want a Marathon app with the ID `/example` and you have `dig` insta
     	return "http://" + srvrecords[0].Host + ":" + srvrecords[0].Port
     }
 
-## In JavaScript
+### In JavaScript
 
 See the [front-end of the m-shop](https://github.com/mhausenblas/m-shop/blob/master/frontend-static/content/m-shop.js) example.
 
-## A Python snippet
+### A Python snippet
 
 See the [mc](https://github.com/mhausenblas/mc) project.
