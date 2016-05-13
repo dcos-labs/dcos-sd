@@ -13,13 +13,17 @@ DC/OS comes with a set of powerful yet un-opinionated [service discovery](https:
 
 Let's say you have a Marathon app with the app ID `/example` and want to know on the public routable IP address it is running (if it's on a public node):
 
-    $ export APP_NODE=$(echo "curl -s ifconfig.co" | dcos node ssh --master-proxy --mesos-id=$(dcos task --json | jq --raw-output '.[] | select(.name == "example") | .slave_id') 2>/dev/null)
+    $ export APP_NODE=$(echo "curl -s ifconfig.ca" | dcos node ssh --master-proxy --mesos-id=$(dcos task --json | jq --raw-output '.[] | select(.name == "example") | .slave_id') 2>/dev/null)
 
 ### Listing public nodes
 
-To get the cluster-internal IP address of the public node(s):
+To get the cluster-internal IP address of the public node:
 
     $ export PUBLIC_NODE_INTERNAL_IP=$(dcos node --json | jq "map(select(.attributes.public_ip).hostname)" | grep \" | cut -d"\"" -f 2)
+
+To get the public Internet-routable IP address of the public node:
+
+    $ export PUBLIC_NODE_PUBLIC_IP=$(echo "curl -s ifconfig.ca" | dcos node ssh --master-proxy --mesos-id=$(dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public != null) | .id') 2>/dev/null)
 
 ### Manual service discovery
 
