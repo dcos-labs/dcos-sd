@@ -85,7 +85,10 @@ Assuming you want a Marathon app with the ID `/example` and you have `dig` insta
 
 ### In JavaScript
 
-See the [front-end of the m-shop](https://github.com/mhausenblas/m-shop/blob/master/frontend-static/content/m-shop.js) example.
+* [front-end of the m-shop](https://github.com/mhausenblas/m-shop/blob/master/frontend-static/content/m-shop.js): See the example.
+* [mesosdns-cli](https://www.npmjs.com/package/mesosdns-cli): A CLI for querying Mesos DNS service names.
+* [mesosdns-client](https://www.npmjs.com/package/mesosdns-client): A simple client for Mesos DNS which makes it possible to receive actual endpoints from Mesos service names.
+* [mesosdns-http-agent](https://www.npmjs.com/package/mesosdns-http-agent):  A http.Agent which makes it possible to consume Mesos service resources by simply using the Mesos DNS service names.
 
 ### A Python snippet
 
