@@ -94,6 +94,10 @@ Assuming you want a Marathon app with the ID `/example` and you have `dig` insta
 * [mesosdns-client](https://www.npmjs.com/package/mesosdns-client): A simple client for Mesos DNS which makes it possible to receive actual endpoints from Mesos service names.
 * [mesosdns-http-agent](https://www.npmjs.com/package/mesosdns-http-agent):  A http.Agent which makes it possible to consume Mesos service resources by simply using the Mesos DNS service names.
 
+### In Bash scripting
+
+* [tobilg/mesosdns-resolver](https://github.com/tobilg/mesosdns-resolver): A bash script to resolve Mesos DNS SRV records to actual host:port endpoints
+
 ### A Python snippet
 
 See the [mc](https://github.com/mhausenblas/mc) project.
